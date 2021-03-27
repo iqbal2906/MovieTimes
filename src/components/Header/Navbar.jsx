@@ -11,19 +11,28 @@ const Navbar = () => {
   const [dropdown, setDropdown] = useState(false);
 
   const handleClick = () => setClick(!click);
+  const closeMobileMenu = () => setClick(false);
 
   const onMouseEnter = () => {
-    setDropdown(true);
+    if (window.innerWidth < 960) {
+      setDropdown(false);
+    } else {
+      setDropdown(true);
+    }
   };
 
   const onMouseLeave = () => {
-    setDropdown(false);
+    if (window.innerWidth < 960) {
+      setDropdown(false);
+    } else {
+      setDropdown(false);
+    }
   };
 
   return (
     <nav>
       <div className="nav__container">
-        <Link to="/">
+        <Link to="/" onClick={closeMobileMenu}>
           <img className="nav__logo" src={Logo} alt="" />
         </Link>
         <div className="search__container">
@@ -31,12 +40,8 @@ const Navbar = () => {
           <img className="search__icons" src={Search} alt="" />
         </div>
         <div className="nav__link">
-          <ul className="menu__items">
-            <li
-              className="li__categories"
-              onMouseEnter={onMouseEnter}
-              onMouseLeave={onMouseLeave}
-            >
+          <ul className={click ? "menu__items active" : "menu__items"}>
+            <li onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
               <img src={Grid} alt="" />
               <Link className="li__categories" to="/categories">
                 categories

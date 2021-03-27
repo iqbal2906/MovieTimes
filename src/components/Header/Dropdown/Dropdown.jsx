@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { fetchCategories } from "../../../service";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import "./dropdown.css";
 
 const Dropdown = () => {
