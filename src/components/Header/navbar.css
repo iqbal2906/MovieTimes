@@ -1,11 +1,12 @@
 .nav__container {
+  --container-width: 100%;
   display: flex;
   background-color: rgba(255, 255, 255, 0.05);
-  width: 100%;
+  width: var(--container-width);
   height: 66px;
   align-items: center;
   justify-content: space-between;
-  padding: 0 121px;
+  padding: 0 calc(var(--container-width) * 0.05);
 }
 
 .nav__logo {
@@ -13,9 +14,15 @@
   width: 112px;
 }
 
+.search__container {
+  width: 571px;
+  min-width: 180px;
+  margin: 0 20px;
+}
+
 .nav__search {
   position: relative;
-  width: 571px;
+  width: 100%;
   height: 36px;
   min-width: 50px;
   background: rgba(0, 0, 0, 0.13);
@@ -42,34 +49,43 @@
 
 .nav__link {
   display: flex;
-  width: 33%;
   justify-content: space-between;
   align-items: center;
+  width: 33%;
 }
 
-.nav__link ul {
+.menu__items {
+  display: flex;
+  align-items: center;
   color: #e5e5e5;
   font-size: 14px;
-  margin: 0 2%;
   font-weight: 600;
   text-transform: uppercase;
   text-decoration: none;
   list-style-type: none;
 }
 
-.li__categories {
-  margin-left: 14px;
-}
-
-.ul__categories {
+.menu__items li {
+  margin: 0 5%;
   display: flex;
-  align-items: center;
-  margin: 0 14px;
 }
 
-.ul__movies,
-.ul__tvshows,
-.ul__login {
+.li__categories {
+  height: 66px;
+  align-items: center;
+  display: flex;
+  margin-left: 14px;
   text-decoration: none;
   color: #e5e5e5;
+}
+
+.li__movies,
+.li__tvshows,
+.li__login {
+  text-decoration: none;
+  color: #e5e5e5;
+}
+
+.hamburger {
+  display: none;
 }

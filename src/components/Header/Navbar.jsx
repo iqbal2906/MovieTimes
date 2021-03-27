@@ -1,47 +1,67 @@
-import React from "react";
+import React, { useState } from "react";
 import Logo from "../../assets/moovietime-logo.svg";
 import Grid from "../../assets/grid-icon.svg";
 import Search from "../../assets/search-icon.svg";
 import { Link } from "react-router-dom";
+import Dropdown from "./Dropdown/Dropdown";
 import "./navbar.css";
 
 const Navbar = () => {
+  const [click, setClick] = useState(false);
+  const [dropdown, setDropdown] = useState(false);
+
+  const handleClick = () => setClick(!click);
+
+  const onMouseEnter = () => {
+    setDropdown(true);
+  };
+
+  const onMouseLeave = () => {
+    setDropdown(false);
+  };
+
   return (
     <nav>
       <div className="nav__container">
         <Link to="/">
           <img className="nav__logo" src={Logo} alt="" />
         </Link>
-        <div>
+        <div className="search__container">
           <input className="nav__search" type="text" placeholder="Find movie" />
           <img className="search__icons" src={Search} alt="" />
         </div>
         <div className="nav__link">
-          <ul className="ul__categories">
-            <img src={Grid} alt="" />
-            <li className="li__categories">categories</li>
-          </ul>
-          <ul>
+          <ul className="menu__items">
+            <li
+              className="li__categories"
+              onMouseEnter={onMouseEnter}
+              onMouseLeave={onMouseLeave}
+            >
+              <img src={Grid} alt="" />
+              <Link className="li__categories" to="/categories">
+                categories
+              </Link>
+              {dropdown && <Dropdown />}
+            </li>
             <li>
-              <Link className="ul__movies" to="/movies">
+              <Link className="li__movies" to="/movies">
                 movies
               </Link>
             </li>
-          </ul>
-          <ul>
             <li>
-              <Link className="ul__tvshows" to="/tvshows">
-                tv shows
+              <Link className="li__tvshows" to="/tvshows">
+                tvshows
               </Link>
             </li>
-          </ul>
-          <ul>
             <li>
-              <Link className="ul__login" to="/login">
+              <Link className="li__login" to="/login">
                 login
               </Link>
             </li>
           </ul>
+        </div>
+        <div className="hamburger" onClick={handleClick}>
+          <i className={click ? "fas fa-times" : "fas fa-bars"} />
         </div>
       </div>
     </nav>
