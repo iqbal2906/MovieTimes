@@ -1,0 +1,18 @@
+.title {
+  color: white;
+}
+
+.card__slider {
+  position: relative;
+  display: flex;
+  width: 518px;
+  height: 324px;
+  background: #000;
+  margin: 0 20px;
+}
+
+/* .card__poster {
+  position: absolute;
+  height: 364px;
+  width: 243px;
+} */

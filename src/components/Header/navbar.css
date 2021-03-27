@@ -75,7 +75,7 @@
 }
 
 .menu__items li:hover {
-  color: #1888ff;
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .li__categories {
